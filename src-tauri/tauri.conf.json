@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "speranto",
+  "productName": "esperanto",
   "version": "0.1.0",
-  "identifier": "com.mdiazn80.speranto",
+  "identifier": "com.mdiazn80.esperanto",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "speranto",
+        "title": "esperanto",
         "width": 800,
         "height": 600
       }
