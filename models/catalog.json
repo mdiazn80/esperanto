@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "voxtral-mini-3b-2507-q4km",
+      "name": "Voxtral Mini 3B",
+      "description": "Mistral AI's speech model: transcription and translation in one pass.",
+      "runtime": "llama-server",
+      "chatTemplate": "mistral-v7-tekken",
+      "languages": ["en", "es"],
+      "minRamGb": 8,
+      "recommended": true,
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://huggingface.co/mistralai/Voxtral-Mini-3B-2507"
+      },
+      "files": [
+        {
+          "role": "model",
+          "name": "Voxtral-Mini-3B-2507-Q4_K_M.gguf",
+          "url": "https://huggingface.co/ggml-org/Voxtral-Mini-3B-2507-GGUF/resolve/20616573013f28229fff61de74359d3eeff61f6a/Voxtral-Mini-3B-2507-Q4_K_M.gguf",
+          "size": 2473001920,
+          "sha256": "4705be8ec22ca23d12632f4b4a3691faa95917d90a06d3cf3c3ec0e91958f1a8"
+        },
+        {
+          "role": "audioProjector",
+          "name": "mmproj-Voxtral-Mini-3B-2507-Q8_0.gguf",
+          "url": "https://huggingface.co/ggml-org/Voxtral-Mini-3B-2507-GGUF/resolve/20616573013f28229fff61de74359d3eeff61f6a/mmproj-Voxtral-Mini-3B-2507-Q8_0.gguf",
+          "size": 715714080,
+          "sha256": "4f24c4ef3ce929d02ed9d1cfb050ae9a7365f057c0ddec0d489580982ebe0d02"
+        }
+      ]
+    },
+    {
+      "id": "campplus-voxceleb-speakers",
+      "name": "CAM++ speaker model",
+      "description": "3D-Speaker's voice print model: tells speakers apart for the speaker labels.",
+      "runtime": "sherpa-onnx",
+      "languages": [],
+      "minRamGb": 1,
+      "license": {
+        "name": "Apache-2.0",
+        "url": "https://github.com/modelscope/3D-Speaker"
+      },
+      "files": [
+        {
+          "role": "speakerEmbedding",
+          "name": "3dspeaker_speech_campplus_sv_en_voxceleb_16k.onnx",
+          "url": "https://huggingface.co/csukuangfj/speaker-embedding-models/resolve/0743f301363dec56491a490f6d6cbc9d67f9a3bf/3dspeaker_speech_campplus_sv_en_voxceleb_16k.onnx",
+          "size": 29596978,
+          "sha256": "357a834f702b80161e5b981182c038e18553c1f2ca752ed6cec2052365d4129b"
+        }
+      ]
+    }
+  ]
+}

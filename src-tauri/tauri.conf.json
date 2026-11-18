@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "esperanto",
+  "productName": "Esperanto",
   "version": "0.1.0",
   "identifier": "com.mdiazn80.esperanto",
   "build": {
@@ -12,13 +12,22 @@
   "app": {
     "windows": [
       {
-        "title": "esperanto",
-        "width": 800,
-        "height": 600
+        "title": "Esperanto",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 1024,
+        "minHeight": 600,
+        "visible": false,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "trafficLightPosition": {
+          "x": 18,
+          "y": 24
+        }
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src ipc: http://ipc.localhost"
     }
   },
   "bundle": {
@@ -29,7 +38,15 @@
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
-      "icons/icon.ico"
-    ]
+      "icons/icon.ico",
+      "icons/Assets.car"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "14.4",
+      "files": {
+        "Resources/en.lproj/InfoPlist.strings": "./locales/en.lproj/InfoPlist.strings",
+        "Resources/es.lproj/InfoPlist.strings": "./locales/es.lproj/InfoPlist.strings"
+      }
+    }
   }
 }

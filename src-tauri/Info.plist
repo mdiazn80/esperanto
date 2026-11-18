@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Esperanto listens to your microphone to transcribe and translate speech. Audio is processed on this Mac unless you use a remote AI engine.</string>
+  <key>NSAudioCaptureUsageDescription</key>
+  <string>Esperanto can transcribe and translate the audio your Mac is playing, such as meetings and videos. Audio is processed on this Mac unless you use a remote AI engine.</string>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+    <string>es</string>
+  </array>
+</dict>
+</plist>

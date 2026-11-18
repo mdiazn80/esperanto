@@ -1,0 +1,243 @@
+# Common development tasks for Esperanto (Tauri v2 + React).
+# Requires Task: https://taskfile.dev  (macOS: `brew install go-task`)
+# Run `task` (or `task --list`) to see every task.
+
+version: "3"
+
+vars:
+  TARGET: aarch64-apple-darwin # Apple Silicon only
+  BUNDLE_DIR: target/{{.TARGET}}/release/bundle
+  BUNDLE_CONF: src-tauri/binaries/bundle.conf.json
+  BENCH_DIR: '{{.ESPERANTO_BENCH_DIR | default (printf "%s/.cache/esperanto-bench" .HOME)}}'
+  BENCH_MODEL: voxtral-mini-3b
+  BENCH_MODEL_HF: ggml-org/Voxtral-Mini-3B-2507-GGUF
+
+tasks:
+  default:
+    desc: List available tasks
+    silent: true
+    cmds:
+      - task --list
+
+  # ── Setup ──────────────────────────────────────────────────────────────
+
+  install:
+    desc: Install JavaScript dependencies and fetch Rust crates
+    sources:
+      - package.json
+      - pnpm-lock.yaml
+      - Cargo.toml
+      - Cargo.lock
+      - "**/Cargo.toml"
+    cmds:
+      - pnpm install --frozen-lockfile
+      - cargo fetch
+
+  doctor:
+    desc: Show toolchain and environment info (tauri info)
+    cmds:
+      - pnpm tauri info
+
+  # ── Development ────────────────────────────────────────────────────────
+
+  dev:
+    desc: Run the desktop app with hot reload
+    deps: [install]
+    cmds:
+      - pnpm tauri dev
+
+  dev:web:
+    desc: Run only the frontend in a browser (no Tauri backend, commands will fail)
+    deps: [install]
+    cmds:
+      - pnpm dev
+
+  bindings:
+    desc: Regenerate the TypeScript bindings (src/bindings.ts) from Rust commands
+    cmds:
+      - cargo test -p esperanto export_typescript_bindings
+
+  ui:add:
+    desc: "Add shadcn/ui components. Usage: task ui:add -- select dialog"
+    requires:
+      vars: [CLI_ARGS]
+    cmds:
+      - pnpm dlx shadcn@latest add {{.CLI_ARGS}}
+
+  # ── Quality ────────────────────────────────────────────────────────────
+
+  format:
+    desc: Format all code (Prettier + rustfmt)
+    cmds:
+      - pnpm format
+      - cargo fmt --all
+
+  lint:
+    desc: Lint frontend (ESLint) and Rust (clippy)
+    cmds:
+      - task: lint:web
+      - task: lint:rust
+
+  lint:web:
+    desc: Lint the frontend with ESLint
+    cmds:
+      - pnpm lint
+
+  lint:rust:
+    desc: Lint Rust with clippy (warnings are errors)
+    cmds:
+      - cargo clippy --workspace --all-targets -- -D warnings
+
+  typecheck:
+    desc: Type-check the frontend
+    cmds:
+      - pnpm typecheck
+
+  test:
+    desc: Run all tests (frontend + Rust)
+    cmds:
+      - task: test:web
+      - task: test:rust
+
+  test:web:
+    desc: Run frontend tests (Vitest)
+    cmds:
+      - pnpm test
+
+  test:rust:
+    desc: Run Rust tests (also regenerates src/bindings.ts)
+    cmds:
+      - cargo test --workspace
+
+  check:
+    desc: Run every check (format, lint, types, tests), without modifying files
+    deps: [install]
+    cmds:
+      - pnpm format:check
+      - cargo fmt --all --check
+      - task: lint
+      - task: typecheck
+      - task: test
+      # `test:rust` also regenerates src/bindings.ts.
+
+  # ── Build ──────────────────────────────────────────────────────────────
+
+  build:web:
+    desc: Build the frontend only (dist/)
+    deps: [install]
+    cmds:
+      - pnpm build
+
+  sidecar:
+    desc: Download the official llama-server build to bundle with the app (~17 MB, verified)
+    cmds:
+      - scripts/fetch-llama-server.sh
+    status:
+      - test -f src-tauri/binaries/bundle.conf.json
+
+  build:debug:
+    desc: Build a debug .app bundle (faster, with devtools), including llama-server
+    deps: [install, sidecar]
+    cmds:
+      - pnpm tauri build --debug --target {{.TARGET}} --bundles app --config {{.BUNDLE_CONF}}
+
+  build:
+    desc: Build the release .app bundle (unsigned), including llama-server
+    deps: [install, sidecar]
+    cmds:
+      - pnpm tauri build --target {{.TARGET}} --bundles app --config {{.BUNDLE_CONF}}
+      - echo "Bundle at {{.BUNDLE_DIR}}/macos/"
+
+  build:dmg:
+    desc: Build the release .app and .dmg (unsigned), including llama-server
+    deps: [install, sidecar]
+    cmds:
+      - pnpm tauri build --target {{.TARGET}} --bundles app,dmg --config {{.BUNDLE_CONF}}
+
+  open:
+    desc: Open the folder with the latest release bundle in Finder
+    cmds:
+      - open {{.BUNDLE_DIR}}/macos
+
+  icons:
+    desc: Regenerate app and tray icons in src-tauri/icons/ (SVG sources in src-tauri/icons/source/, Icon Composer document Esperanto.icon)
+    vars:
+      TMP:
+        sh: mktemp -d
+    cmds:
+      # Windows/Linux icons (full-bleed light icon); mobile sets aren't used.
+      - pnpm tauri icon src-tauri/icons/source/icono-light-L1.svg -o src-tauri/icons
+      - rm -rf src-tauri/icons/android src-tauri/icons/ios
+      # macOS .icns from the padded variant that follows the macOS icon grid.
+      - pnpm tauri icon src-tauri/icons/source/app-icon-macos.svg -o {{.TMP}}/mac
+      - cp {{.TMP}}/mac/icon.icns src-tauri/icons/icon.icns
+      # Monochrome tray glyphs: black template for macOS, white for other OSes.
+      - pnpm tauri icon src-tauri/icons/source/tray-icon-dark.svg -o {{.TMP}}/tray -p 44
+      - cp {{.TMP}}/tray/44x44.png src-tauri/icons/tray-icon-template.png
+      - pnpm tauri icon src-tauri/icons/source/tray-icon-light.svg -o {{.TMP}}/tray-light -p 32
+      - cp {{.TMP}}/tray-light/32x32.png src-tauri/icons/tray-icon-light.png
+      # macOS 26+ app icon (Liquid Glass) from the Icon Composer document.
+      - scripts/compile-app-icon.sh
+      - rm -rf {{.TMP}}
+
+  # ── Model evaluation (M1) ──────────────────────────────────────────────
+  # Data and models live outside the repo, in BENCH_DIR (default ~/.cache/esperanto-bench).
+  # Typical run: task bench:tools && task bench:data && task bench:serve (own terminal) && task bench:run
+
+  bench:tools:
+    desc: Install llama.cpp (provides llama-server) with Homebrew
+    cmds:
+      - brew install llama.cpp
+
+  bench:data:
+    desc: "Download the FLEURS en/es test set (~0.9 GB streamed). Usage: task bench:data [COUNT=100]"
+    vars:
+      COUNT: '{{.COUNT | default "100"}}'
+    cmds:
+      - python3 scripts/bench/fleurs.py --out {{.BENCH_DIR}}/fleurs --count {{.COUNT}}
+
+  bench:data:synthetic:
+    desc: Generate a tiny en/es test set with macOS text-to-speech (smoke tests only)
+    cmds:
+      - scripts/bench/synthetic.sh {{.BENCH_DIR}}/synthetic
+
+  bench:serve:
+    desc: "Serve Voxtral Mini 3B with llama-server on port 8080 (downloads ~3.2 GB on first run)"
+    cmds:
+      # The GGUF embeds the wrong chat template (Devstral's); force Mistral's.
+      - llama-server -hf {{.BENCH_MODEL_HF}} --port 8080 --ctx-size 8192 -ngl 99 --no-jinja --chat-template mistral-v7-tekken --cache-ram 0
+
+  bench:run:
+    desc: "Evaluate the served model. Usage: task bench:run [SET=fleurs] -- [extra esperanto-bench flags]"
+    vars:
+      SET: '{{.SET | default "fleurs"}}'
+      RUN_ID:
+        sh: date +%Y%m%d-%H%M%S
+    cmds:
+      - >-
+        cargo run --release -p esperanto-bench --
+        --manifest {{.BENCH_DIR}}/{{.SET}}/manifest.jsonl
+        --model {{.BENCH_MODEL}}
+        --out {{.BENCH_DIR}}/results/{{.SET}}-{{.RUN_ID}}
+        {{.CLI_ARGS}}
+
+  # ── Maintenance ────────────────────────────────────────────────────────
+
+  outdated:
+    desc: List outdated JavaScript and Rust dependencies
+    ignore_error: true
+    cmds:
+      - pnpm outdated
+      - cargo update --workspace --dry-run --verbose
+
+  clean:
+    desc: Remove build outputs (dist/ and Rust target/)
+    cmds:
+      - rm -rf dist
+      - cargo clean
+
+  clean:all:
+    desc: Remove build outputs and node_modules
+    cmds:
+      - task: clean
+      - rm -rf node_modules .task

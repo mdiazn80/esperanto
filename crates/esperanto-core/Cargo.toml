@@ -1,0 +1,22 @@
+[package]
+name = "esperanto-core"
+description = "Core domain types and pipeline for Esperanto"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+earshot = "1"
+serde.workspace = true
+specta.workspace = true
+
+[dev-dependencies]
+hound.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

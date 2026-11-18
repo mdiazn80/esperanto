@@ -1,0 +1,263 @@
+{
+  "app": {
+    "name": "Esperanto"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "toolbar": {
+    "sourceLanguage": "Spoken language",
+    "targetLanguage": "Translate to",
+    "start": "Start",
+    "openSettings": "Settings",
+    "stop": "Stop",
+    "source": "Audio source",
+    "sourceMicrophone": "Microphone",
+    "sourceSystem": "System audio (what your Mac plays)",
+    "sourceSystemShort": "System audio",
+    "languagePair": "Languages",
+    "recording": "Recording · {{elapsed}}",
+    "mark": "Mark moment",
+    "marked": "Moment marked.",
+    "nothingToMark": "There's no phrase to mark yet.",
+    "micShort": "MIC",
+    "systemShort": "SYS"
+  },
+  "languages": {
+    "none": "Don't translate",
+    "en": "English",
+    "es": "Spanish"
+  },
+  "transcript": {
+    "emptyTitle": "No transcript yet",
+    "emptyBody": "Choose the spoken language and, if you like, a language to translate into. The live transcript will appear here.",
+    "label": "Live transcript",
+    "jumpToLive": "Jump to live",
+    "columns": {
+      "time": "Time",
+      "who": "Who",
+      "original": "Original",
+      "translation": "Translation",
+      "marked": "Marked moment"
+    }
+  },
+  "status": {
+    "localHint": "AI models run on this Mac. No audio leaves it.",
+    "latency": "{{seconds}} s",
+    "behind": "Falling behind",
+    "remote": "Remote · {{host}}",
+    "remoteHint": "Audio is sent to {{host}} to be transcribed and translated.",
+    "systemAudio": "System audio · {{device}}",
+    "noModel": "No model installed"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Preferences are saved automatically.",
+    "tabs": {
+      "general": "General",
+      "audio": "Audio",
+      "models": "Models",
+      "provider": "AI engine",
+      "privacy": "Privacy"
+    },
+    "uiLanguage": "Interface language",
+    "uiLanguageHint": "Only changes the app's interface, not the transcription languages.",
+    "theme": "Appearance",
+    "themes": {
+      "system": "Match system",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "inputDevice": "Microphone",
+    "systemDefaultInput": "System default",
+    "unavailableInput": "Unavailable device",
+    "inputDeviceHint": "Changes apply the next time you press Start."
+  },
+  "uiLanguages": {
+    "system": "Match system",
+    "en": "English",
+    "es": "Español"
+  },
+  "errors": {
+    "settingsLoadFailed": "Couldn't load your settings. Using the defaults.",
+    "settingsSaveFailed": "Couldn't save your settings.",
+    "unknown": "Something went wrong.",
+    "microphonePermissionDenied": "Microphone access was denied.",
+    "noInputDevice": "No microphone found. Connect one and try again.",
+    "inputDeviceNotFound": "The selected microphone isn't connected. Choose another one in Settings › Audio.",
+    "audioStreamFailed": "Audio capture stopped. Check the device and try again.",
+    "sessionAlreadyRunning": "Esperanto is already listening.",
+    "modelNotFound": "That model isn't in the catalog.",
+    "downloadInProgress": "That model is already downloading.",
+    "downloadFailed": "The download failed. Check your connection and try again; it will resume where it stopped.",
+    "downloadCancelled": "Download paused.",
+    "modelCorrupted": "The downloaded file was corrupted and has been removed. Try downloading it again.",
+    "insufficientDiskSpace": "There isn't enough free disk space for this model.",
+    "modelDeleteFailed": "Couldn't delete the model's files.",
+    "modelNotInstalled": "No model is installed. Download one in Settings › Models.",
+    "llamaServerNotFound": "llama.cpp (llama-server) isn't installed.",
+    "llamaServerFailed": "The local model couldn't start. Try again.",
+    "inferenceFailed": "Part of the speech couldn't be transcribed.",
+    "providerNotFound": "That remote server no longer exists.",
+    "providerInvalid": "Check the name, the URL and the model.",
+    "providerInsecureUrl": "Use an https:// URL. Plain http:// is only allowed for local network addresses.",
+    "providerTokenMissing": "Add the server's API token first.",
+    "providerUnreachable": "Couldn't reach the server. Check the URL and your connection.",
+    "providerUnauthorized": "The server rejected the token.",
+    "providerRejected": "The server rejected the request. Check the model name and that it accepts audio.",
+    "keychainFailed": "Couldn't access the Keychain.",
+    "noOutputDevice": "There's no audio output to capture system audio from.",
+    "internal": "Something went wrong inside Esperanto. Try again, or restart the app.",
+    "historyNotFound": "That session no longer exists.",
+    "historyFailed": "Couldn't read or change the history.",
+    "exportFailed": "Couldn't save the file."
+  },
+  "tray": {
+    "tooltip": "Esperanto: live transcription",
+    "show": "Show Esperanto",
+    "quit": "Quit Esperanto"
+  },
+  "session": {
+    "listening": "Listening…",
+    "inputLevel": "Input level",
+    "permissionTitle": "Esperanto can't use the microphone",
+    "permissionBody": "Allow Esperanto in System Settings › Privacy & Security › Microphone, then press Start again.",
+    "openMicrophoneSettings": "Open microphone settings",
+    "preparing": "Loading the model…",
+    "noModelTitle": "No model installed",
+    "noModelBody": "Download a model in Settings › Models, then press Start again.",
+    "serverMissingTitle": "llama.cpp isn't installed",
+    "serverMissingBody": "Esperanto runs models with llama.cpp. During development, install it with Homebrew and press Start again:",
+    "speaking": "Speaking…",
+    "usingDefaultInput": "The selected microphone isn't connected, so the system default is being used.",
+    "systemSilentTitle": "No system audio",
+    "systemSilentBody": "Nothing is playing, or Esperanto isn't allowed to record system audio. If something is playing, allow Esperanto in System Settings › Privacy & Security › Screen & System Audio Recording (System Audio Recording Only), then stop and start again.",
+    "openSystemAudioSettings": "Open system audio settings"
+  },
+  "models": {
+    "recommended": "Recommended",
+    "installed": "Installed",
+    "size": "Size",
+    "languages": "Languages",
+    "memory": "Memory",
+    "memoryValue": "{{gb}} GB of RAM or more",
+    "license": "License",
+    "licenseNotice": "The model is downloaded from Hugging Face. By downloading it you accept its license ({{license}}).",
+    "download": "Download ({{size}})",
+    "resume": "Resume download ({{downloaded}} of {{total}})",
+    "preparing": "Preparing download…",
+    "progress": "{{downloaded}} of {{total}} · {{percent}}",
+    "cancelDownload": "Pause",
+    "downloaded": "Model downloaded and verified.",
+    "deleteTitle": "Delete {{name}}?",
+    "deleteBody": "Its files are removed from this Mac. You can download it again later.",
+    "diskUsage": "Models use {{size}} on this Mac.",
+    "descriptions": {
+      "voxtral-mini-3b-2507-q4km": "Mistral AI's speech model: transcribes and translates in a single pass.",
+      "campplus-voxceleb-speakers": "3D-Speaker's voice print model: tells speakers apart for the speaker labels."
+    },
+    "downloading": "Downloading {{name}}"
+  },
+  "getStarted": {
+    "title": "Welcome to Esperanto",
+    "body": "Esperanto transcribes and translates speech on this Mac with {{name}}, an AI model that runs locally. It needs to be downloaded once.",
+    "stepDownload": "Download the model ({{size}}).",
+    "stepLanguages": "Choose the spoken language and, if you like, a language to translate into.",
+    "stepStart": "Press Start and speak.",
+    "license": "The model is downloaded from Hugging Face. By downloading it you accept its license:"
+  },
+  "providers": {
+    "intro": "Choose where speech is transcribed and translated: on this Mac, or on a model behind your own API gateway (any OpenAI-compatible server).",
+    "local": "This Mac (local)",
+    "localModel": "{{name}} · no audio leaves this Mac",
+    "noToken": "no token",
+    "edit": "Edit",
+    "add": "Add remote server",
+    "name": "Name",
+    "namePlaceholder": "Home GPU server",
+    "baseUrl": "Base URL",
+    "baseUrlHint": "Including the API version, e.g. /v1. HTTPS is required except for local network addresses.",
+    "model": "Model",
+    "token": "API token",
+    "tokenPlaceholder": "Paste the gateway's token",
+    "tokenSaved": "Saved in the Keychain (type to replace it)",
+    "tokenHint": "Stored in the macOS Keychain; never shown again.",
+    "clearToken": "Remove token",
+    "plainHttp": "This server uses plain HTTP: audio and the token travel unencrypted on your network.",
+    "save": "Save",
+    "test": "Test connection",
+    "testing": "Testing the connection…",
+    "testOk": "Connected: the model accepts audio ({{seconds}} s).",
+    "modelNotListed": "The server doesn't list \"{{model}}\". Available: {{models}}",
+    "deleteTitle": "Delete {{name}}?",
+    "deleteBody": "Its settings and its token are removed. If it was in use, Esperanto goes back to the local model.",
+    "appliesNextSession": "Changes apply the next time you press Start."
+  },
+  "privacy": {
+    "keepHistory": "Keep history",
+    "keepHistoryHint": "Save each session on this Mac so you can read it again later. Nothing is sent anywhere. Turning this off also deletes the session in progress.",
+    "deleteAll": "Delete all history",
+    "deleteAllTitle": "Delete all history?",
+    "deleteAllBody": "Every saved session is removed from this Mac, including the one in progress. This can't be undone.",
+    "deleted": "History deleted."
+  },
+  "history": {
+    "title": "History",
+    "description": "Your past sessions, saved only on this Mac.",
+    "empty": "No sessions yet. They appear here when you stop listening.",
+    "off": "History is off. Turn it on in Settings › Privacy to keep your sessions.",
+    "back": "All sessions",
+    "deleteTitle": "Delete the session of {{date}}?",
+    "deleteBody": "Its transcript is removed from this Mac. This can't be undone."
+  },
+  "export": {
+    "open": "Export",
+    "title": "Export transcript",
+    "description": "Save the transcript as a text or subtitle file.",
+    "format": "Format",
+    "formats": {
+      "txt": "Plain text (.txt)",
+      "md": "Markdown, with times (.md)",
+      "srt": "Subtitles (.srt)",
+      "vtt": "Web subtitles (.vtt)"
+    },
+    "content": "Include",
+    "contents": {
+      "original": "Original only",
+      "translation": "Translation only",
+      "both": "Original and translation"
+    },
+    "save": "Save…",
+    "saved": "Saved as {{name}}."
+  },
+  "speakers": {
+    "default": "Speaker {{number}}",
+    "rename": "Rename {{name}}",
+    "renameHint": "Click to rename",
+    "setting": "Identify speakers",
+    "settingHint": "Labels each phrase with who said it, in a different color. A small AI model tells voices apart on this Mac (also with a remote engine). Applies from the next session.",
+    "needsModel": "It needs the speaker model (30 MB, {{license}}), downloaded from Hugging Face.",
+    "modelMissing": "Speakers aren't labeled: download the speaker model in Settings › Audio.",
+    "title": "Speakers",
+    "speaking": "speaking",
+    "name": "Name",
+    "unnamed": "No name",
+    "off": "Turn on Identify speakers in Settings › Audio to see who's speaking here.",
+    "waiting": "Speakers show up here as soon as they talk.",
+    "hint": "Click a speaker to give them a name. Names apply to this session."
+  },
+  "panel": {
+    "input": "Input",
+    "microphone": "Microphone · {{device}}",
+    "latency": "Latency",
+    "phrases": "Phrases",
+    "engine": "Engine",
+    "local": "Local · {{model}}",
+    "localPrivacy": "No audio leaves this Mac.",
+    "moments": "Marked moments",
+    "momentsEmpty": "Press Mark moment to save the phrase being spoken and come back to it later.",
+    "moment": "{{time}} · {{text}}",
+    "version": "v{{version}}"
+  }
+}

@@ -1,0 +1,166 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/ibm-plex-sans";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: "IBM Plex Sans Variable", "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-text: var(--brand-text);
+  --color-rec: var(--rec);
+  --color-rec-surface: var(--rec-surface);
+  --color-live: var(--live);
+  --color-original: var(--original);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * Esperanto palette: near-black (or warm white) surfaces, one brand accent
+ * (the yellow of the icon, #FFD60A) and red only for "recording".
+ * `--brand-text` is the yellow readable as text on the background.
+ */
+:root {
+  --brand: #ffd60a;
+  --brand-foreground: #111111;
+  --brand-text: #8a6d00;
+  --rec: #d92d20;
+  --rec-surface: #fdecea;
+  --live: #16a34a;
+  --original: #55555b;
+  --background: #ffffff;
+  --foreground: #111113;
+  --card: #f4f4f1;
+  --card-foreground: #111113;
+  --popover: #ffffff;
+  --popover-foreground: #111113;
+  --primary: #ffd60a;
+  --primary-foreground: #111111;
+  --secondary: #f0f0ec;
+  --secondary-foreground: #111113;
+  --muted: #f0f0ec;
+  --muted-foreground: #6b6b70;
+  --accent: #ecece7;
+  --accent-foreground: #111113;
+  --destructive: #d92d20;
+  --border: #e6e5e0;
+  --input: #dddcd6;
+  --ring: #c9a800;
+  --chart-1: #ffd60a;
+  --chart-2: #6b6b70;
+  --chart-3: #4b4b50;
+  --chart-4: #2b2b30;
+  --chart-5: #111113;
+  --radius: 0.5rem;
+  --sidebar: #f8f8f6;
+  --sidebar-foreground: #111113;
+  --sidebar-primary: #ffd60a;
+  --sidebar-primary-foreground: #111111;
+  --sidebar-accent: #ecece7;
+  --sidebar-accent-foreground: #111113;
+  --sidebar-border: #e6e5e0;
+  --sidebar-ring: #c9a800;
+}
+
+.dark {
+  --brand: #ffd60a;
+  --brand-foreground: #111111;
+  --brand-text: #ffd60a;
+  --rec: #ff6b5e;
+  --rec-surface: #3a1512;
+  --live: #34d058;
+  --original: #b9b9be;
+  --background: #0a0a0b;
+  --foreground: #f2f2f3;
+  --card: #151518;
+  --card-foreground: #f2f2f3;
+  --popover: #141417;
+  --popover-foreground: #f2f2f3;
+  --primary: #ffd60a;
+  --primary-foreground: #111111;
+  --secondary: #1b1b1f;
+  --secondary-foreground: #f2f2f3;
+  --muted: #1b1b1f;
+  --muted-foreground: #8d8d93;
+  --accent: #1e1e22;
+  --accent-foreground: #f2f2f3;
+  --destructive: #ff6b5e;
+  --border: #232327;
+  --input: #2c2c31;
+  --ring: #ffd60a;
+  --chart-1: #ffd60a;
+  --chart-2: #8d8d93;
+  --chart-3: #5c5c62;
+  --chart-4: #3a3a40;
+  --chart-5: #232327;
+  --sidebar: #0e0e10;
+  --sidebar-foreground: #f2f2f3;
+  --sidebar-primary: #ffd60a;
+  --sidebar-primary-foreground: #111111;
+  --sidebar-accent: #1b1b1f;
+  --sidebar-accent-foreground: #f2f2f3;
+  --sidebar-border: #232327;
+  --sidebar-ring: #ffd60a;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  /* Small uppercase monospace label: section titles and column heads. */
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.12em] text-muted-foreground uppercase;
+  }
+}

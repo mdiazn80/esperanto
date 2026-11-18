@@ -1,51 +1,57 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
-import "./App.css";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { SessionPanel } from "@/components/layout/session-panel";
+import { SpeakersPanel } from "@/components/layout/speakers-panel";
+import { Toolbar } from "@/components/layout/toolbar";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { TranscriptView } from "@/features/transcript/transcript-view";
+import { resolveUiLanguage } from "@/lib/i18n";
+import { applyTheme, useResolvedTheme } from "@/lib/theme";
+import { useModels } from "@/store/models";
+import { useProviders } from "@/store/providers";
+import { useSettings } from "@/store/settings";
 
-function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+export default function App() {
+  const { i18n } = useTranslation();
+  const { settings, loaded, load } = useSettings();
+  const theme = useResolvedTheme(settings.theme);
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
+  const loadModels = useModels((s) => s.load);
+  const loadProviders = useProviders((s) => s.load);
+
+  useEffect(() => {
+    void load();
+    void loadModels();
+    void loadProviders();
+  }, [load, loadModels, loadProviders]);
+
+  useEffect(() => applyTheme(theme), [theme]);
+
+  useEffect(() => {
+    const language = resolveUiLanguage(
+      settings.uiLanguage,
+      navigator.languages,
+    );
+    void i18n.changeLanguage(language);
+    document.documentElement.lang = language;
+  }, [i18n, settings.uiLanguage]);
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
+    <TooltipProvider>
+      {loaded && (
+        <div className="flex h-screen flex-col bg-background text-foreground">
+          <Toolbar />
+          <div className="flex min-h-0 flex-1">
+            <SpeakersPanel />
+            <main className="flex min-w-0 flex-1 flex-col">
+              <TranscriptView />
+            </main>
+            <SessionPanel />
+          </div>
+        </div>
+      )}
+      <Toaster theme={theme} position="bottom-right" />
+    </TooltipProvider>
   );
 }
-
-export default App;

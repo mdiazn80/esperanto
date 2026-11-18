@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Rust workspace build output
+/target
+
+# Task (taskfile.dev) checksum cache
+.task
+
+# esperanto-bench default output folder
+bench-results/
+
+# llama-server sidecar fetched by scripts/fetch-llama-server.sh
+/src-tauri/binaries/

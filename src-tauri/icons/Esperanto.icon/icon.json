@@ -1,0 +1,24 @@
+{
+  "fill-specializations" : [
+    { "value" : { "solid" : "srgb:1.00000,1.00000,1.00000,1.00000" } },
+    { "appearance" : "dark", "value" : { "solid" : "srgb:0.06667,0.06667,0.06667,1.00000" } }
+  ],
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "image-name" : "lines.svg",
+          "name" : "lines",
+          "fill-specializations" : [
+            { "value" : { "solid" : "srgb:0.06667,0.06667,0.06667,1.00000" } },
+            { "appearance" : "dark", "value" : { "solid" : "srgb:1.00000,1.00000,1.00000,1.00000" } }
+          ]
+        },
+        { "image-name" : "bars.svg", "name" : "bars" }
+      ],
+      "shadow" : { "kind" : "neutral", "opacity" : 0.5 },
+      "translucency" : { "enabled" : false, "value" : 0.5 }
+    }
+  ],
+  "supported-platforms" : { "squares" : [ "macOS" ] }
+}

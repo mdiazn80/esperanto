@@ -1,0 +1,263 @@
+{
+  "app": {
+    "name": "Esperanto"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "delete": "Eliminar"
+  },
+  "toolbar": {
+    "sourceLanguage": "Idioma hablado",
+    "targetLanguage": "Traducir a",
+    "start": "Empezar",
+    "openSettings": "Ajustes",
+    "stop": "Detener",
+    "source": "Fuente de audio",
+    "sourceMicrophone": "Micrófono",
+    "sourceSystem": "Audio del sistema (lo que suena en tu Mac)",
+    "sourceSystemShort": "Audio del sistema",
+    "languagePair": "Idiomas",
+    "recording": "Grabando · {{elapsed}}",
+    "mark": "Marcar momento",
+    "marked": "Momento marcado.",
+    "nothingToMark": "Todavía no hay ninguna frase que marcar.",
+    "micShort": "MIC",
+    "systemShort": "SYS"
+  },
+  "languages": {
+    "none": "No traducir",
+    "en": "Inglés",
+    "es": "Español"
+  },
+  "transcript": {
+    "emptyTitle": "Todavía no hay transcripción",
+    "emptyBody": "Elige el idioma hablado y, si quieres, un idioma al que traducir. La transcripción en directo aparecerá aquí.",
+    "label": "Transcripción en directo",
+    "jumpToLive": "Ir al directo",
+    "columns": {
+      "time": "Tiempo",
+      "who": "Quién",
+      "original": "Original",
+      "translation": "Traducción",
+      "marked": "Momento marcado"
+    }
+  },
+  "status": {
+    "localHint": "Los modelos de IA se ejecutan en este Mac. El audio no sale de él.",
+    "latency": "{{seconds}} s",
+    "behind": "Con retraso",
+    "remote": "Remoto · {{host}}",
+    "remoteHint": "El audio se envía a {{host}} para transcribirlo y traducirlo.",
+    "systemAudio": "Audio del sistema · {{device}}",
+    "noModel": "Ningún modelo instalado"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "description": "Las preferencias se guardan automáticamente.",
+    "tabs": {
+      "general": "General",
+      "audio": "Audio",
+      "models": "Modelos",
+      "provider": "Motor de IA",
+      "privacy": "Privacidad"
+    },
+    "uiLanguage": "Idioma de la interfaz",
+    "uiLanguageHint": "Solo cambia la interfaz de la app, no los idiomas de transcripción.",
+    "theme": "Apariencia",
+    "themes": {
+      "system": "Igual que el sistema",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
+    "inputDevice": "Micrófono",
+    "systemDefaultInput": "El del sistema",
+    "unavailableInput": "Dispositivo no disponible",
+    "inputDeviceHint": "Los cambios se aplican la próxima vez que pulses Empezar."
+  },
+  "uiLanguages": {
+    "system": "Igual que el sistema",
+    "en": "English",
+    "es": "Español"
+  },
+  "errors": {
+    "settingsLoadFailed": "No se han podido cargar tus ajustes. Se usan los valores por defecto.",
+    "settingsSaveFailed": "No se han podido guardar tus ajustes.",
+    "unknown": "Algo ha ido mal.",
+    "microphonePermissionDenied": "Se ha denegado el acceso al micrófono.",
+    "noInputDevice": "No se ha encontrado ningún micrófono. Conecta uno y vuelve a intentarlo.",
+    "inputDeviceNotFound": "El micrófono elegido no está conectado. Elige otro en Ajustes › Audio.",
+    "audioStreamFailed": "La captura de audio se ha detenido. Revisa el dispositivo y vuelve a intentarlo.",
+    "sessionAlreadyRunning": "Esperanto ya está escuchando.",
+    "modelNotFound": "Ese modelo no está en el catálogo.",
+    "downloadInProgress": "Ese modelo ya se está descargando.",
+    "downloadFailed": "La descarga ha fallado. Revisa la conexión y vuelve a intentarlo; continuará donde se quedó.",
+    "downloadCancelled": "Descarga en pausa.",
+    "modelCorrupted": "El fichero descargado estaba dañado y se ha borrado. Vuelve a descargarlo.",
+    "insufficientDiskSpace": "No hay espacio libre suficiente en el disco para este modelo.",
+    "modelDeleteFailed": "No se han podido borrar los ficheros del modelo.",
+    "modelNotInstalled": "No hay ningún modelo instalado. Descarga uno en Ajustes › Modelos.",
+    "llamaServerNotFound": "llama.cpp (llama-server) no está instalado.",
+    "llamaServerFailed": "No se ha podido arrancar el modelo local. Vuelve a intentarlo.",
+    "inferenceFailed": "No se ha podido transcribir parte de lo que se ha dicho.",
+    "providerNotFound": "Ese servidor remoto ya no existe.",
+    "providerInvalid": "Revisa el nombre, la URL y el modelo.",
+    "providerInsecureUrl": "Usa una URL https://. Solo se admite http:// para direcciones de la red local.",
+    "providerTokenMissing": "Añade primero el token de la API del servidor.",
+    "providerUnreachable": "No se ha podido conectar con el servidor. Revisa la URL y tu conexión.",
+    "providerUnauthorized": "El servidor ha rechazado el token.",
+    "providerRejected": "El servidor ha rechazado la petición. Revisa el nombre del modelo y que acepte audio.",
+    "keychainFailed": "No se ha podido acceder al llavero.",
+    "noOutputDevice": "No hay ninguna salida de audio de la que capturar el audio del sistema.",
+    "internal": "Algo ha fallado dentro de Esperanto. Inténtalo de nuevo o reinicia la aplicación.",
+    "historyNotFound": "Esa sesión ya no existe.",
+    "historyFailed": "No se ha podido leer o modificar el historial.",
+    "exportFailed": "No se ha podido guardar el archivo."
+  },
+  "tray": {
+    "tooltip": "Esperanto: transcripción en directo",
+    "show": "Mostrar Esperanto",
+    "quit": "Salir de Esperanto"
+  },
+  "session": {
+    "listening": "Escuchando…",
+    "inputLevel": "Nivel de entrada",
+    "permissionTitle": "Esperanto no puede usar el micrófono",
+    "permissionBody": "Permite Esperanto en Ajustes del Sistema › Privacidad y seguridad › Micrófono y vuelve a pulsar Empezar.",
+    "openMicrophoneSettings": "Abrir ajustes del micrófono",
+    "preparing": "Cargando el modelo…",
+    "noModelTitle": "No hay ningún modelo instalado",
+    "noModelBody": "Descarga un modelo en Ajustes › Modelos y vuelve a pulsar Empezar.",
+    "serverMissingTitle": "llama.cpp no está instalado",
+    "serverMissingBody": "Esperanto ejecuta los modelos con llama.cpp. Durante el desarrollo, instálalo con Homebrew y vuelve a pulsar Empezar:",
+    "speaking": "Hablando…",
+    "usingDefaultInput": "El micrófono elegido no está conectado, así que se usa el del sistema.",
+    "systemSilentTitle": "No llega audio del sistema",
+    "systemSilentBody": "No está sonando nada, o Esperanto no tiene permiso para grabar el audio del sistema. Si está sonando algo, permite Esperanto en Ajustes del Sistema › Privacidad y seguridad › Grabación de pantalla y audio del sistema (solo audio del sistema), y vuelve a parar y empezar.",
+    "openSystemAudioSettings": "Abrir ajustes de audio del sistema"
+  },
+  "models": {
+    "recommended": "Recomendado",
+    "installed": "Instalado",
+    "size": "Tamaño",
+    "languages": "Idiomas",
+    "memory": "Memoria",
+    "memoryValue": "{{gb}} GB de RAM o más",
+    "license": "Licencia",
+    "licenseNotice": "El modelo se descarga de Hugging Face. Al descargarlo aceptas su licencia ({{license}}).",
+    "download": "Descargar ({{size}})",
+    "resume": "Reanudar descarga ({{downloaded}} de {{total}})",
+    "preparing": "Preparando la descarga…",
+    "progress": "{{downloaded}} de {{total}} · {{percent}}",
+    "cancelDownload": "Pausar",
+    "downloaded": "Modelo descargado y verificado.",
+    "deleteTitle": "¿Eliminar {{name}}?",
+    "deleteBody": "Se borran sus ficheros de este Mac. Puedes volver a descargarlo más adelante.",
+    "diskUsage": "Los modelos ocupan {{size}} en este Mac.",
+    "descriptions": {
+      "voxtral-mini-3b-2507-q4km": "El modelo de voz de Mistral AI: transcribe y traduce en un solo paso.",
+      "campplus-voxceleb-speakers": "El modelo de huellas de voz de 3D-Speaker: distingue a los hablantes para etiquetarlos."
+    },
+    "downloading": "Descargando {{name}}"
+  },
+  "getStarted": {
+    "title": "Te damos la bienvenida a Esperanto",
+    "body": "Esperanto transcribe y traduce lo que se dice en este Mac con {{name}}, un modelo de IA que funciona en local. Solo hay que descargarlo una vez.",
+    "stepDownload": "Descarga el modelo ({{size}}).",
+    "stepLanguages": "Elige el idioma hablado y, si quieres, un idioma al que traducir.",
+    "stepStart": "Pulsa Empezar y habla.",
+    "license": "El modelo se descarga de Hugging Face. Al descargarlo aceptas su licencia:"
+  },
+  "providers": {
+    "intro": "Elige dónde se transcribe y traduce: en este Mac o en un modelo detrás de tu propio gateway (cualquier servidor compatible con OpenAI).",
+    "local": "Este Mac (local)",
+    "localModel": "{{name}} · el audio no sale de este Mac",
+    "noToken": "sin token",
+    "edit": "Editar",
+    "add": "Añadir servidor remoto",
+    "name": "Nombre",
+    "namePlaceholder": "Servidor con GPU de casa",
+    "baseUrl": "URL base",
+    "baseUrlHint": "Incluida la versión de la API, por ejemplo /v1. Se exige HTTPS salvo para direcciones de la red local.",
+    "model": "Modelo",
+    "token": "Token de la API",
+    "tokenPlaceholder": "Pega el token del gateway",
+    "tokenSaved": "Guardado en el llavero (escribe para cambiarlo)",
+    "tokenHint": "Se guarda en el llavero de macOS y no vuelve a mostrarse.",
+    "clearToken": "Quitar token",
+    "plainHttp": "Este servidor usa HTTP sin cifrar: el audio y el token viajan sin cifrar por tu red.",
+    "save": "Guardar",
+    "test": "Probar conexión",
+    "testing": "Probando la conexión…",
+    "testOk": "Conectado: el modelo acepta audio ({{seconds}} s).",
+    "modelNotListed": "El servidor no incluye \"{{model}}\". Disponibles: {{models}}",
+    "deleteTitle": "¿Eliminar {{name}}?",
+    "deleteBody": "Se borran su configuración y su token. Si estaba en uso, Esperanto vuelve al modelo local.",
+    "appliesNextSession": "Los cambios se aplican la próxima vez que pulses Empezar."
+  },
+  "privacy": {
+    "keepHistory": "Guardar historial",
+    "keepHistoryHint": "Guarda cada sesión en este Mac para poder leerla después. No se envía a ningún sitio. Al desactivarlo también se borra la sesión en curso.",
+    "deleteAll": "Borrar todo el historial",
+    "deleteAllTitle": "¿Borrar todo el historial?",
+    "deleteAllBody": "Se eliminan de este Mac todas las sesiones guardadas, incluida la que está en curso. No se puede deshacer.",
+    "deleted": "Historial borrado."
+  },
+  "history": {
+    "title": "Historial",
+    "description": "Tus sesiones anteriores, guardadas solo en este Mac.",
+    "empty": "Todavía no hay sesiones. Aparecen aquí al dejar de escuchar.",
+    "off": "El historial está desactivado. Actívalo en Ajustes › Privacidad para guardar tus sesiones.",
+    "back": "Todas las sesiones",
+    "deleteTitle": "¿Borrar la sesión del {{date}}?",
+    "deleteBody": "Su transcripción se elimina de este Mac. No se puede deshacer."
+  },
+  "export": {
+    "open": "Exportar",
+    "title": "Exportar transcripción",
+    "description": "Guarda la transcripción como texto o como subtítulos.",
+    "format": "Formato",
+    "formats": {
+      "txt": "Texto sin formato (.txt)",
+      "md": "Markdown, con tiempos (.md)",
+      "srt": "Subtítulos (.srt)",
+      "vtt": "Subtítulos web (.vtt)"
+    },
+    "content": "Incluir",
+    "contents": {
+      "original": "Solo el original",
+      "translation": "Solo la traducción",
+      "both": "Original y traducción"
+    },
+    "save": "Guardar…",
+    "saved": "Guardado como {{name}}."
+  },
+  "speakers": {
+    "default": "Hablante {{number}}",
+    "rename": "Renombrar a {{name}}",
+    "renameHint": "Haz clic para cambiar el nombre",
+    "setting": "Identificar hablantes",
+    "settingHint": "Etiqueta cada frase con quién la ha dicho, en un color distinto. Un modelo de IA pequeño distingue las voces en este Mac (también con motor remoto). Se aplica desde la siguiente sesión.",
+    "needsModel": "Necesita el modelo de hablantes (30 MB, {{license}}), que se descarga de Hugging Face.",
+    "modelMissing": "No se etiquetan los hablantes: descarga el modelo de hablantes en Ajustes › Audio.",
+    "title": "Intervinientes",
+    "speaking": "habla",
+    "name": "Nombre",
+    "unnamed": "Sin nombre",
+    "off": "Activa Identificar hablantes en Ajustes › Audio para ver aquí quién habla.",
+    "waiting": "Los intervinientes aparecen aquí en cuanto hablan.",
+    "hint": "Haz clic en un interviniente para ponerle nombre. Los nombres valen para esta sesión."
+  },
+  "panel": {
+    "input": "Entrada",
+    "microphone": "Micrófono · {{device}}",
+    "latency": "Latencia",
+    "phrases": "Frases",
+    "engine": "Motor",
+    "local": "Local · {{model}}",
+    "localPrivacy": "Ningún audio sale de este Mac.",
+    "moments": "Momentos marcados",
+    "momentsEmpty": "Pulsa Marcar momento para guardar la frase que se está diciendo y volver a ella después.",
+    "moment": "{{time}} · {{text}}",
+    "version": "v{{version}}"
+  }
+}

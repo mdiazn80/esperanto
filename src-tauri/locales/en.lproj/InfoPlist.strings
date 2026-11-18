@@ -1,0 +1,3 @@
+/* Shown by macOS when Esperanto asks for microphone access. */
+"NSMicrophoneUsageDescription" = "Esperanto listens to your microphone to transcribe and translate speech. Audio is processed on this Mac unless you use a remote AI engine.";
+"NSAudioCaptureUsageDescription" = "Esperanto can transcribe and translate the audio your Mac is playing, such as meetings and videos. Audio is processed on this Mac unless you use a remote AI engine.";

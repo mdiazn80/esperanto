@@ -1,11 +1,13 @@
 [package]
 name = "esperanto"
-version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-edition = "2024"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Live transcription and translation of any audio, powered by local AI models"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
 
 [lib]
 # The `_lib` suffix may seem redundant but it is necessary
@@ -18,16 +20,31 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-tauri = { version = "2", features = [] }
+esperanto-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+specta.workspace = true
+thiserror.workspace = true
+specta-typescript = "=0.0.15"
+tauri = { version = "2", features = ["tray-icon"] }
 tauri-plugin-opener = "2"
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
+tauri-plugin-store = "2"
+tauri-specta = { version = "=2.0.0-rc.29", features = ["derive", "typescript"] }
+tauri-plugin-window-state = "2"
+tauri-plugin-single-instance = "2"
+sys-locale = "0.3.2"
+esperanto-audio.workspace = true
+esperanto-models.workspace = true
+esperanto-speakers.workspace = true
+reqwest.workspace = true
+esperanto-inference.workspace = true
+getrandom = "0.4"
+log = "0.4"
+keyring = { version = "3.6", features = ["apple-native"] }
+tauri-plugin-log = "2"
+hex = "0.4"
+tokio = { workspace = true, features = ["process", "sync", "time"] }
+tauri-plugin-dialog = "2"
 
-
-# Read the optimization guideline for more details: https://tauri.app/concept/size/#cargo-configuration
-[profile.release]
-codegen-units = 1
-lto = true
-opt-level = 3
-panic = "abort"
-strip = true
+[lints]
+workspace = true

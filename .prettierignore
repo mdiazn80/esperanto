@@ -1,0 +1,6 @@
+dist
+target
+src-tauri
+pnpm-lock.yaml
+src/bindings.ts
+CODE_OF_CONDUCT.md

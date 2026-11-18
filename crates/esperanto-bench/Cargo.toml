@@ -1,0 +1,27 @@
+[package]
+name = "esperanto-bench"
+description = "Latency and quality benchmarks for Esperanto"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+esperanto-audio.workspace = true
+esperanto-core.workspace = true
+esperanto-inference.workspace = true
+anyhow.workspace = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+
+[dev-dependencies]
+hound.workspace = true
+wiremock.workspace = true
+
+[lints]
+workspace = true

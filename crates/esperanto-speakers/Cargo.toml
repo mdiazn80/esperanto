@@ -1,0 +1,20 @@
+[package]
+name = "esperanto-speakers"
+description = "Speaker labels for Esperanto: voice prints of phrases and live clustering"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+sherpa-onnx = "2.0.1"
+thiserror.workspace = true
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+hound.workspace = true

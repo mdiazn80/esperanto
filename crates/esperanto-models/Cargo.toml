@@ -1,0 +1,28 @@
+[package]
+name = "esperanto-models"
+description = "Model catalog, local storage and verified downloads for Esperanto"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+esperanto-core.workspace = true
+fs4 = "1"
+hex = "0.4"
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2 = "0.11"
+thiserror.workspace = true
+tokio = { workspace = true, features = ["fs", "io-util"] }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["fs", "io-util", "macros", "rt-multi-thread"] }
+wiremock.workspace = true
+
+[lints]
+workspace = true
